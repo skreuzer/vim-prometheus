@@ -4,7 +4,7 @@ endif
 
 let b:current_syntax = "prometheus"
 
-syntax keyword prometheusKeyword ALERT IF FOR LABELS ANNOTATIONS AND
+syntax keyword prometheusKeyword ALERT IF FOR LABELS ANNOTATIONS AND WITH
 
 syntax keyword prometheusFunction abs absent ceil changes clamp_max clamp_min
 syntax keyword prometheusFunction count_scalar day_of_month day_of_week
@@ -30,12 +30,16 @@ syntax match prometheusOperator "\v\<\="
 syntax match prometheusOperator "\v\=\~"
 syntax match prometheusOperator "\v\!\~"
 
+syntax keyword prometheusAggrOperator sum min max avg stddev stdvar count
+syntax keyword prometheusAggrOperator count_values bottomk topk quantile
+
 syntax match prometheusRangeSelector "\d\+[smhdwy]"
 
 highlight link prometheusKeyword Keyword
 highlight link prometheusRangeSelector Keyword
 highlight link prometheusComment Comment
 highlight link prometheusOperator Operator
+highlight link prometheusAggrOperator Operator
 highlight link prometheusFunction Function
 
 highlight Function ctermfg=DarkGreen
